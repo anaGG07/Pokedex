@@ -9,8 +9,6 @@
   - [📌 Estructura del Proyecto](#-estructura-del-proyecto)
   - [📥 Instalación y Configuración](#-instalación-y-configuración)
     - [**1️⃣ Clonar el repositorio**](#1️⃣-clonar-el-repositorio)
-    - [**2️⃣ Configurar el Backend**](#2️⃣-configurar-el-backend)
-    - [**3️⃣ Configurar el Frontend**](#3️⃣-configurar-el-frontend)
     - [**Si no se quiere utilizar docker:**](#si-no-se-quiere-utilizar-docker)
     - [**Usando Docker:**](#usando-docker)
   - [🔥 Funcionamiento del Ranking en Tiempo Real](#-funcionamiento-del-ranking-en-tiempo-real)
@@ -106,27 +104,12 @@ La aplicación utiliza **React (Frontend)** y **Node.js con Express (Backend)**,
  cd Pokedex
 ```
 
-### **2️⃣ Configurar el Backend**
 
-1. Instalar dependencias:
-```sh
- cd backend
- npm install
-```
-
-2. Configurar variables de entorno (.env en /backend)
+1. Configurar variables de entorno (.env en /backend)
 
 No es necesario configurar las variables de entorno ya que se ha administrado los secretos con gitHub, estableciendo un entorno de pruebas donde se confirma que no existe realmente información sensible.
 
-
-### **3️⃣ Configurar el Frontend**
-
-1. Instalar dependencias:
-```sh
- cd frontend
- npm install
-```
-
+>[!IMPORTANT]No es necesario hacer NPM install, ya que está configurado Docker para crear todas las dependencias
 
 ### **Si no se quiere utilizar docker:**
 
