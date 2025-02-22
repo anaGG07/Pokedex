@@ -1,0 +1,59 @@
+services:
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:4000/api
+    depends_on:
+      - backend
+    networks:
+      pokeapi:
+        aliases:
+          - frontend  
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - PORT=4000
+      - MONGO_URI=mongodb://mongodb:27017/pokedex
+      - JWT_SECRET=supersecret
+      - POKEAPI_URL=https://pokeapi.co/api/v2
+    depends_on:
+      - mongodb
+    networks:
+      pokeapi:
+        aliases:
+          - backend  
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      pokeapi:
+        aliases:
+          - mongodb  
+
+
+volumes:
+  mongodb_data: 
+
+networks:
+  pokeapi:
+    driver: bridge
